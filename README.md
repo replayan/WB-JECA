@@ -25,7 +25,7 @@ This repository offers meticulously curated resources tailored to streamline WB-
 
 ---
 
-*Note*: The multiple-choice questions (MCQs) from the book "JECA Toppers" by Debasish Kamila, published by Dreambook Publishing, are used for fair use only. ©️
+*Note*: The multiple-choice questions (MCQs) from the book "JECA Toppers" by Debasis Kamila, published by Dreambook Publishing, are used for fair use only. ©️
 
 *For those interested in purchasing the book:*
 - [Dreambook Publishing](https://www.dreambookpublishing.com/product/jeca-toppers/)
