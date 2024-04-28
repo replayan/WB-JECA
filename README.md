@@ -1,6 +1,6 @@
 # Welcome to WB-JECA Preparation Repository! 📚✨
 
-Are you preparing for the WB-JECA exam and seeking curated resources to streamline your study process? You've come to the right place! This repository is a carefully curated collection of outsourced materials, organized to help you ace the WB-JECA exam with confidence.
+This repository offers meticulously curated resources tailored to streamline WB-JECA exam preparation, ensuring candidates approach the exam with confidence and clarity.
 
 ## Why Choose WB-JECA Preparation Repository?
 
@@ -23,14 +23,16 @@ Are you preparing for the WB-JECA exam and seeking curated resources to streamli
 ![Study Strategically](https://github.com/replayan/WB-JECA/assets/86905096/c6553309-2fce-4fad-9abf-47bb8949b659)
 - Focus on areas where you need improvement and make the most of the curated materials at your disposal.
 
-## Let's Ace WB-JECA Together! 💪
+---
 
-Remember, success is not about doing it all alone, but about leveraging the best resources available and using them effectively. As you embark on your WB-JECA preparation journey, keep this in mind:
+*Note*: The multiple-choice questions (MCQs) from the book "JECA Toppers" by Debasish Kamila, published by Dreambook Publishing, are used for fair use only. ©️
+
+*For those interested in purchasing the book:*
+- [Dreambook Publishing](https://www.dreambookpublishing.com/product/jeca-toppers/)
+- [Amazon](https://www.amazon.in/JECA-Toppers-Debasis-Kamila/dp/B0C5DR7CDC)
+
+--- 
 
 > "Success is the sum of small efforts repeated day in and day out." – Robert Collier
-
-So, let's harness the power of curated resources, stay focused, and strive for excellence together!
-
-Ready to get started? Dive into the repository now: [WB-JECA Repository](https://github.com/replayan/WB-JECA)
 
 Happy Studying! 🌟
