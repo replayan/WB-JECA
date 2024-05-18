@@ -56,18 +56,27 @@ Divides the array into partitions and recursively sorts the partitions.
 - **Time Complexity**: O(n log n) on average, O(n^2) in the worst case.
 - **Space Complexity**: O(log n) on average, O(n) in the worst case.
 
-### Example
-```python
-# Quick Sort Example in Python
-def quick_sort(arr):
-    if len(arr) <= 1:
-        return arr
-    pivot = arr[len(arr) // 2]
-    left = [x for x in arr if x < pivot]
-    middle = [x for x in arr if x == pivot]
-    right = [x for x in arr if x > pivot]
-    return quick_sort(left) + middle + quick_sort(right)
-```
+Here's a table summarizing the time complexity (TC) and space complexity (SC) of common sorting algorithms in their best, average, and worst cases:
+
+| Algorithm       | Best Case TC  | Average Case TC | Worst Case TC | Space Complexity (SC) |
+|-----------------|---------------|-----------------|---------------|-----------------------|
+| **Bubble Sort** | O(n)          | O(n²)           | O(n²)         | O(1)                  |
+| **Insertion Sort** | O(n)      | O(n²)           | O(n²)         | O(1)                  |
+| **Selection Sort** | O(n²)      | O(n²)           | O(n²)         | O(1)                  |
+| **Merge Sort**  | O(n log n)    | O(n log n)      | O(n log n)    | O(n)                  |
+| **Quick Sort**  | O(n log n)    | O(n log n)      | O(n²)         | O(log n) (average case), O(n) (worst case) |
+| **Heap Sort**   | O(n log n)    | O(n log n)      | O(n log n)    | O(1)                  |
+| **Counting Sort** | O(n + k)    | O(n + k)        | O(n + k)      | O(k)                  |
+| **Radix Sort**  | O(nk)         | O(nk)           | O(nk)         | O(n + k)              |
+| **Bucket Sort** | O(n + k)      | O(n + k)        | O(n²)         | O(n)                  |
+| **Shell Sort**  | O(n log n)    | O(n^(3/2))      | O(n²)         | O(1)                  |
+| **Tim Sort**    | O(n)          | O(n log n)      | O(n log n)    | O(n)                  |
+
+- **n**: Number of elements to be sorted
+- **k**: Range of the numbers in Counting Sort and Radix Sort
+- **log n**: Logarithm base 2, though the base of the logarithm doesn't change the complexity class
+
+Note : That some algorithms like Quick Sort have different worst-case and average-case space complexities depending on the implementation.
 
 ---
 
