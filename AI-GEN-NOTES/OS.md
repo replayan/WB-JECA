@@ -1,189 +1,201 @@
-# Operating System (OS)
+### Process
 
-## 1. Process
-### Definition
-A **Process** is a program in execution.
+- **Definition**: A process is a program in execution. It is a unit of work that is executed by the operating system.
+- **Characteristics**:
+  - **Program Counter (PC)**: The current instruction being executed.
+  - **Registers**: Small amount of memory that stores data temporarily.
+  - **Stack**: A region of memory that stores data temporarily.
+  - **Open Files**: Files that are currently being used by the process.
+- **Process States**:
+  - **Newborn**: The process is being created.
+  - **Running**: The process is currently being executed.
+  - **Waiting**: The process is waiting for some event to occur.
+  - **Zombie**: The process has finished execution but its parent process has not yet acknowledged it.
+  - **Dead**: The process has finished execution and its parent process has acknowledged it.
+- **Process Creation**:
+  - **Fork**: Creates a new process by duplicating an existing process.
+  - **Exec**: Loads a new program into memory and starts executing it.
+- **Process Termination**:
+  - **Exit**: The process terminates normally.
+  - **Kill**: The process is terminated by the operating system.
 
-### States of a Process
-- **New**: Process is being created.
-- **Ready**: Process is waiting to be assigned to a CPU.
-- **Running**: Process instructions are being executed.
-- **Waiting**: Process is waiting for some event to occur.
-- **Terminated**: Process has finished execution.
+### Thread
 
-### Process Control Block (PCB)
-A data structure used by the operating system to store all the information about a process.
-- **Process ID (PID)**
-- **Program Counter**
-- **CPU Registers**
-- **Memory Management Information**
-- **I/O Status Information**
+- **Definition**: A thread is a lightweight process that shares the same memory space as other threads within the same process.
+- **Characteristics**:
+  - **Program Counter (PC)**: The current instruction being executed.
+  - **Registers**: Small amount of memory that stores data temporarily.
+  - **Stack**: A region of memory that stores data temporarily.
+- **Thread States**:
+  - **Running**: The thread is currently being executed.
+  - **Waiting**: The thread is waiting for some event to occur.
+  - **Sleeping**: The thread is waiting for a specific amount of time to pass.
+  - **Zombie**: The thread has finished execution but its parent thread has not yet acknowledged it.
+  - **Dead**: The thread has finished execution and its parent thread has acknowledged it.
+- **Thread Creation**:
+  - **Create**: Creates a new thread within a process.
+- **Thread Termination**:
+  - **Exit**: The thread terminates normally.
+  - **Kill**: The thread is terminated by the operating system.
 
-### Example
-```plaintext
-PCB {
-  PID: 1234,
-  State: Running,
-  Program Counter: 3456,
-  Registers: {...},
-  ...
-}
-```
+### CPU Scheduling
 
----
+- **Definition**: CPU scheduling is the process of allocating the CPU to different processes.
+- **Types**:
+  - **Preemptive Scheduling**: The operating system can interrupt a process at any time to schedule another process.
+  - **Non-Preemptive Scheduling**: The operating system cannot interrupt a process once it has been allocated the CPU.
+- **Scheduling Algorithms**:
+  - **Preemptive Scheduling**:
+    - **Round Robin (RR)**: Each process is given a fixed time slice (called a time quantum) to execute before the operating system switches to the next process.
+    - **Shortest Job First (SJF)**: The process with the shortest burst time is executed first.
+    - **Priority Scheduling**: The process with the highest priority is executed first.
+  - **Non-Preemptive Scheduling**:
+    - **First Come First Serve (FCFS)**: The process that arrives first is executed first.
+    - **Shortest Job First (SJF)**: The process with the shortest burst time is executed first.
+    - **Priority Scheduling**: The process with the highest priority is executed first.
+- **CPU Scheduling Advantages and Disadvantages**:
+  - **Preemptive Scheduling**:
+    - **Advantages**:
+      - **Improved CPU Utilization**: The CPU is utilized more efficiently as processes are switched quickly.
+      - **Improved Response Time**: The response time is improved as processes are executed quickly.
+    - **Disadvantages**:
+      - **Overheads**: There are overheads associated with context switching and interrupt handling.
+      - **Starvation**: A process with a high priority may starve if a process with a lower priority is executed for a long time.
+  - **Non-Preemptive Scheduling**:
+    - **Advantages**:
+      - **Low Overheads**: There are low overheads associated with context switching and interrupt handling.
+      - **No Starvation**: A process with a high priority will not starve as it will be executed immediately.
+    - **Disadvantages**:
+      - **Poor CPU Utilization**: The CPU is utilized poorly as processes are executed sequentially.
+      - **Long Response Time**: The response time is long as processes are executed sequentially.
 
-## 2. Thread
-### Definition
-A **Thread** is the smallest unit of processing that can be performed in an OS.
+### Deadlock
 
-### Types of Threads
-- **User Threads**: Managed by user-level libraries.
-- **Kernel Threads**: Managed by the OS kernel.
+- **Definition**: Deadlock is a situation where two or more processes are blocked indefinitely, each waiting for the other to release a resource.
+- **Causes**:
+  - **Mutual Exclusion**: Two or more processes are competing for the same resource.
+  - **Hold and Wait**: A process is holding a resource and waiting for another resource.
+  - **No Preemption**: The operating system cannot interrupt a process once it has been allocated a resource.
+  - **Circular Wait**: A process is waiting for a resource that is held by another process, which is waiting for a resource held by the first process.
+- **Detection**:
+  - **Resource Type**: The type of resource that is causing the deadlock.
+  - **Process ID**: The ID of the process that is causing the deadlock.
+- **Prevention**:
+  - **Avoid Mutual Exclusion**: Ensure that processes do not compete for the same resource.
+  - **Avoid Hold and Wait**: Ensure that processes do not hold a resource and wait for another resource.
+  - **Prevent No Preemption**: Ensure that the operating system can interrupt a process once it has been allocated a resource.
+  - **Prevent Circular Wait**: Ensure that processes do not wait for a resource that is held by another process.
 
-### Multithreading Models
-- **Many-to-One**: Many user threads mapped to one kernel thread.
-- **One-to-One**: Each user thread mapped to a kernel thread.
-- **Many-to-Many**: Many user threads mapped to many kernel threads.
+### Synchronization
 
-### Example
-```plaintext
-Thread {
-  TID: 1,
-  State: Running,
-  Program Counter: 2345,
-  Registers: {...},
-  ...
-}
-```
+- **Definition**: Synchronization is the process of controlling access to shared resources by multiple processes.
+- **Types**:
+  - **Mutual Exclusion**: Ensuring that only one process can access a shared resource at a time.
+  - **Synchronization**: Ensuring that multiple processes access shared resources in a coordinated manner.
+- **Synchronization Techniques**:
+  - **Semaphores**: A variable that can be used to control access to a shared resource.
+  - **Monitors**: A synchronization primitive that allows processes to communicate with each other.
+  - **Locks**: A synchronization primitive that allows processes to access a shared resource.
 
----
+### Memory Management
 
-## 3. CPU Scheduling
-### Definition
-**CPU Scheduling** is the process of determining which process will own the CPU for execution while another process is on hold.
+- **Definition**: Memory management is the process of managing the memory used by processes.
+- **Types**:
+  - **Contiguous Allocation**: Allocating memory in a contiguous block.
+  - **Non-Contiguous Allocation**: Allocating memory in non-contiguous blocks.
+- **Memory Allocation**:
+  - **Dynamic Memory Allocation**: Allocating memory at runtime.
+  - **Static Memory Allocation**: Allocating memory at compile time.
+- **Memory Protection**:
+  - **Segmentation**: Dividing memory into segments and protecting each segment.
+  - **Paging**: Dividing memory into pages and protecting each page.
+- **Virtual Memory**:
+  - **Definition**: Virtual memory is a memory management technique that provides an "idealized abstraction of the storage resources that are actually available on a given machine".
+  - **Properties**:
+    - **Memory Virtualization**: Virtual memory makes application programming easier by hiding fragmentation of physical memory.
+    - **Address Translation**: The operating system maps memory addresses used by a program into physical addresses in computer memory.
+    - **Paging**: The operating system divides memory into pages and maps virtual addresses into physical addresses.
+    - **Segmentation**: The operating system divides memory into segments and maps virtual addresses into physical addresses.
 
-### Scheduling Algorithms
-- **First-Come, First-Served (FCFS)**: Processes are scheduled in the order they arrive.
-- **Shortest Job Next (SJN)**: Process with the smallest execution time is selected.
-- **Round Robin (RR)**: Each process gets an equal share of the CPU time.
-- **Priority Scheduling**: Process with the highest priority is selected.
-- **Multilevel Queue Scheduling**: Processes are divided into different queues based on their priority.
+### Disk Management
 
-### Example
-```plaintext
-Process Queue: [P1, P2, P3, P4]
-```
+- **Definition**: Disk management is the process of organizing and maintaining the storage on a computer's hard disk.
+- **Tasks**:
+  - **Partitioning**: Dividing the hard disk into separate areas, each of which is called a partition.
+  - **Formatting**: Formatting the partitions to different file systems.
+  - **Defragmentation**: Defragmenting the disk to improve disk performance.
+  - **Backup**: Backing up the disk to ensure data safety.
+- **Disk Management Tools**:
+  - **Disk Management Tool**: A tool that can be used to manage disk partitions and formatting.
+  - **Disk Defragmenter Tool**: A tool that can be used to defragment the disk.
 
----
+### File Management
 
-## 4. Deadlock
-### Definition
-A **Deadlock** is a situation where a set of processes are blocked because each process is holding a resource and waiting for another resource held by another process.
+- **Definition**: File management is the process of managing files used by processes.
+- **Types**:
+  - **File Allocation**: Allocating space on the disk for files.
+  - **File Protection**: Protecting files from unauthorized access.
+- **File Operations**:
+  - **Create**: Creating a new file.
+  - **Read**: Reading data from a file.
+  - **Write**: Writing data to a file.
+  - **Delete**: Deleting a file.
+- **File Systems**:
+  - **File Allocation Table (FAT)**: A file system that uses a table to manage file allocation.
+  - **Inode**: A file system that uses an inode to manage file allocation.
+  - **Journaling File System**: A file system that uses a journal to manage file allocation.
 
-### Necessary Conditions
-- **Mutual Exclusion**: At least one resource must be held in a non-sharable mode.
-- **Hold and Wait**: A process is holding at least one resource and waiting for additional resources.
-- **No Preemption**: Resources cannot be forcibly taken from processes.
-- **Circular Wait**: A set of processes are waiting for each other in a circular chain.
+### Conclusion
 
-### Deadlock Handling
-- **Deadlock Prevention**: Ensure that at least one of the necessary conditions cannot hold.
-- **Deadlock Avoidance**: Use algorithms like Banker’s algorithm to avoid deadlocks.
-- **Deadlock Detection**: Allow the system to enter a deadlock state and then recover.
-- **Deadlock Recovery**: Recover from deadlock by terminating processes or preempting resources.
+- **Summary**: Operating systems manage processes, threads, CPU scheduling, deadlock, synchronization, memory management, disk management, and file management.
+- **Key Points**:
+  - **Process**: A process is a program in execution.
+  - **Thread**: A thread is a lightweight process that shares the same memory space as other threads within the same process.
+  - **CPU Scheduling**: CPU scheduling is the process of allocating the CPU to different processes.
+  - **Deadlock**: Deadlock is a situation where two or more processes are blocked indefinitely, each waiting for the other to release a resource.
+  - **Synchronization**: Synchronization is the process of controlling access to shared resources by multiple processes.
+  - **Memory Management**: Memory management is the process of managing the memory used by processes.
+  - **Disk Management**: Disk management is the process of organizing and maintaining the storage on a computer's hard disk.
+  - **File Management**: File management is the process of managing files used by processes.
 
-### Example
-```plaintext
-P1: Holds R1, waiting for R2
-P2: Holds R2, waiting for R1
-```
+# SOURCE:
 
----
+[1] https://www.geeksforgeeks.org/preemptive-and-non-preemptive-scheduling/
 
-## 5. Synchronization
-### Definition
-**Synchronization** is the coordination of concurrent processes to ensure correct execution.
+[2] https://www.tutorialspoint.com/disk-management-in-operating-system
 
-### Critical Section Problem
-A **Critical Section** is a segment of code where shared resources are accessed.
+[3] https://en.wikipedia.org/wiki/Virtual_memory
 
-### Solutions
-- **Mutex Locks**: Ensures that only one process can enter the critical section at a time.
-- **Semaphores**: Signaling mechanism to control access to the critical section.
-- **Monitors**: High-level synchronization construct that controls access to shared data.
+[4] https://testbook.com/key-differences/difference-between-preemptive-and-non-preemptive-scheduling
 
-### Example
-```c
-// Semaphore Example
-semaphore mutex = 1;
+[5] https://www.geeksforgeeks.org/difference-between-preemptive-and-non-preemptive-cpu-scheduling-algorithms/
 
-wait(mutex);
-  // Critical Section
-signal(mutex);
-```
+[6] https://www.guru99.com/preemptive-vs-non-preemptive-scheduling.html
 
----
+[7] https://www.javatpoint.com/preemptive-vs-non-preemptive-scheduling
 
-## 6. Memory Management
-### Definition
-**Memory Management** is the functionality of an operating system which handles or manages primary memory.
+[8] https://study.com/academy/lesson/preemptive-vs-non-preemptive-process-scheduling.html
 
-### Techniques
-- **Paging**: Divides memory into fixed-size pages.
-- **Segmentation**: Divides memory into variable-size segments.
-- **Virtual Memory**: Uses hardware and software to allow a computer to compensate for physical memory shortages by temporarily transferring data from random access memory to disk storage.
+[9] https://www.turing.com/kb/different-types-of-non-preemptive-cpu-scheduling-algorithms
 
-### Example
-```plaintext
-Physical Memory: [Frame 0, Frame 1, Frame 2, ...]
-Virtual Memory: [Page 0, Page 1, Page 2, ...]
-```
+[10] https://www.geeksforgeeks.org/disk-management-in-operating-system/
 
----
+[11] https://www.spiceworks.com/tech/devops/articles/what-is-virtual-memory/
 
-## 7. Disk Management
-### Definition
-**Disk Management** involves managing disk storage resources efficiently.
+[12] https://byjus.com/gate/difference-between-preemptive-and-non-preemptive-scheduling/
 
-### Disk Scheduling Algorithms
-- **First-Come, First-Served (FCFS)**
-- **Shortest Seek Time First (SSTF)**
-- **SCAN (Elevator Algorithm)**
-- **C-SCAN (Circular SCAN)**
-- **LOOK and C-LOOK**
+[13] https://www.geeksforgeeks.org/virtual-memory-in-operating-system/
 
-### Example
-```plaintext
-Disk Queue: [98, 183, 37, 122, 14, 124, 65, 67]
-```
+[14] https://dzone.com/articles/deadlock-free-synchronization-in-java
 
----
+[15] https://www.techtarget.com/searchstorage/definition/virtual-memory
 
-## 8. File Management
-### Definition
-**File Management** refers to the way the operating system handles files, including their creation, deletion, reading, writing, and access control.
+[16] https://www.geeksforgeeks.org/thread-in-operating-system/
 
-### File System Structure
-- **File**: Basic unit of storage.
-- **Directory**: Contains information about files.
-- **Path**: Specifies a unique location in the file system.
+[17] https://www.javatpoint.com/disk-management-in-operating-system
 
-### File Access Methods
-- **Sequential Access**: Read/write sequentially.
-- **Direct Access**: Read/write in arbitrary order.
-- **Indexed Access**: Use an index to access files.
+[18] https://learn.microsoft.com/en-us/windows-server/storage/disk-management/overview-of-disk-management
 
-### Example
-```plaintext
-Root Directory
-  |
-  +-- home
-  |   |
-  |   +-- user
-  |       |
-  |       +-- file.txt
-  |
-  +-- etc
-      |
-      +-- config.conf
-```
+[19] https://www.scaler.com/topics/operating-system/disk-management/
+
+[20] https://www.javatpoint.com/os-virtual-memory
