@@ -1,458 +1,200 @@
-# C Programming
+# C Language
 
-## Variables and Data Types
-- **Variables**: Named storage locations in memory to hold values.
-  - **Declaration**: `data_type variable_name;`
-  - **Example**: `int age;`
-- **Data Types**:
-  - **Basic Types**: `int`, `char`, `float`, `double`
-  - **Derived Types**: Arrays, Pointers, Structures, Unions
-  - **Void Type**: `void`
-  - **Example**:
-    ```c
-    int age = 25;
-    char grade = 'A';
-    float salary = 55000.50;
-    ```
+---
 
-## IO Operations
-- **Input/Output Functions**:
-  - **Standard Input**: `scanf()`
-  - **Standard Output**: `printf()`
-  - **Example**:
-    ```c
-    int num;
-    printf("Enter a number: ");
-    scanf("%d", &num);
-    printf("You entered: %d", num);
-    ```
+### Key Points
+- Variables in C store data and must have a declared data type like int or char, with rules for naming.
+- IO operations use `printf` for output and `scanf` for input, handling formatted data.
+- Operators include arithmetic (+, -, *), relational (==, <), and logical (&&, ||), forming expressions.
+- Control flow statements like if-else, loops (for, while), and switch manage program execution order.
+- Functions are reusable code blocks, with parameters and return types, supporting recursion.
+- Arrays store multiple values of the same type, accessed by index, with multi-dimensional support.
+- Pointers hold memory addresses, enabling dynamic memory and efficient parameter passing.
+- Strings are character arrays, handled with functions like `strlen` and `strcpy` from `<string.h>`.
+- Structures group different data types, while unions share memory for members, optimizing space.
+- File handling involves reading/writing with functions like `fopen` and `fclose`, using modes like "r" or "w".
+- Pre-processor directives like `#include` and `#define` prepare code before compilation.
+- Command line arguments allow passing inputs at program start, accessed via `main`'s `argc` and `argv`.
 
-## Operators and Expressions
-- **Arithmetic Operators**: `+`, `-`, `*`, `/`, `%`
-- **Relational Operators**: `==`, `!=`, `>`, `<`, `>=`, `<=`
-- **Logical Operators**: `&&`, `||`, `!`
-- **Bitwise Operators**: `&`, `|`, `^`, `~`, `<<`, `>>`
-- **Assignment Operators**: `=`, `+=`, `-=`, `*=`, `/=`, `%=`
-- **Increment/Decrement Operators**: `++`, `--`
-- **Example**:
-  ```c
-  int a = 10, b = 20;
-  int sum = a + b;
-  int isEqual = (a == b);
-  ```
+### Variables and Data Types
+Variables are named memory locations storing data, requiring a declared type like `int`, `char`, `float`, or `double`. C is statically typed, meaning types are fixed at declaration. Naming rules include starting with a letter or underscore, using only letters, digits, and underscores, no spaces, and avoiding keywords.
 
-## Control Flow Statements
-- **Conditional Statements**:
-  - **if**:
-    ```c
-    if (condition) {
-        // statements
-    }
-    ```
-  - **if-else**:
-    ```c
-    if (condition) {
-        // statements
-    } else {
-        // statements
-    }
-    ```
-  - **else-if Ladder**:
-    ```c
-    if (condition1) {
-        // statements
-    } else if (condition2) {
-        // statements
-    } else {
-        // statements
-    }
-    ```
-  - **switch-case**:
-    ```c
-    switch (expression) {
-        case constant1:
-            // statements
-            break;
-        case constant2:
-            // statements
-            break;
-        default:
-            // statements
-    }
-    ```
-- **Looping Statements**:
-  - **for Loop**:
-    ```c
-    for (initialization; condition; increment) {
-        // statements
-    }
-    ```
-  - **while Loop**:
-    ```c
-    while (condition) {
-        // statements
-    }
-    ```
-  - **do-while Loop**:
-    ```c
-    do {
-        // statements
-    } while (condition);
-    ```
+**Primitive Data Types:**
+- `int`: Whole numbers, typically 4 bytes, range -2,147,483,648 to 2,147,483,647, format `%d`.
+- `char`: Single character, 1 byte, range -128 to 127 or 0 to 255, format `%c`.
+- `float`: Single-precision floating-point, 4 bytes, range ~1.2E-38 to 3.4E+38, format `%f`.
+- `double`: Double-precision, 8 bytes, range ~1.7E-308 to 1.7E+308, format `%lf`.
+- `void`: Indicates no value, used for pointers or functions without return.
 
-## Functions
-- **Definition**: Block of code performing a specific task, reusable.
-- **Syntax**:
-  ```c
-  return_type function_name(parameters) {
-      // function body
-      return value;
-  }
-  ```
-- **Example**:
-  ```c
-  int add(int a, int b) {
-      return a + b;
-  }
-  int main() {
-      int sum = add(5, 10);
-      printf("Sum: %d", sum);
-      return 0;
-  }
-  ```
+Modifiers like `long`, `short`, `signed`, `unsigned` adjust size or range. Sizes vary by system; use `sizeof()` to check, e.g., on 64-bit GCC:
+| Data Type           | Size (bytes) | Range                              | Format Specifier |
+|--------------------|--------------|------------------------------------|------------------|
+| short int          | 2            | -32,768 to 32,767                 | %hd              |
+| unsigned short int | 2            | 0 to 65,535                       | %hu              |
+| int                | 4            | -2,147,483,648 to 2,147,483,647   | %d               |
+| long int           | 4            | -2,147,483,648 to 2,147,483,647   | %ld              |
+| float              | 4            | 1.2E-38 to 3.4E+38                | %f               |
+| double             | 8            | 1.7E-308 to 1.7E+308              | %lf              |
 
-## Array
-- **Definition**: Collection of elements of the same type.
-- **Syntax**:
-  ```c
-  data_type array_name[array_size];
-  ```
-- **Example**:
-  ```c
-  int arr[5] = {1, 2, 3, 4, 5};
-  ```
+Constants, declared with `const`, have fixed values, e.g., `const int MAX = 100`.
 
-## Pointers
-- **Definition**: Variables that store memory addresses.
-- **Syntax**:
-  ```c
-  data_type *pointer_name;
-  ```
-- **Example**:
-  ```c
-  int value = 10;
-  int *ptr = &value;
-  printf("Value: %d, Address: %p", *ptr, ptr);
-  ```
+### IO Operations
+IO operations handle data input/output, primarily via console using `printf` for output and `scanf` for input. `printf` prints formatted output, e.g., `printf("Age: %d\n", age);` outputs "Age: 25" with newline. `scanf` reads input, e.g., `scanf("%d", &age);` stores user input into `age`. Format specifiers match data types: `%d` for int, `%f` for float, `%c` for char, `%s` for strings. Use `&` with `scanf` for variable addresses. Other functions include `getchar()`, `putchar()`, `gets()`, `puts()`, but `printf` and `scanf` are standard for formatted IO.
 
-## String Handling
-- **String Definition**: Array of characters terminated by a null character `\0`.
-- **Functions**:
-  - **strlen()**: Returns the length of the string.
-  - **strcpy()**: Copies one string to another.
-  - **strcat()**: Concatenates two strings.
-  - **strcmp()**: Compares two strings.
-- **Example**:
-  ```c
-  char str1[20] = "Hello";
-  char str2[20];
-  strcpy(str2, str1);
-  strcat(str2, " World");
-  int len = strlen(str2);
-  int cmp = strcmp(str1, "Hello");
-  ```
+### Operators and Expressions
+Operators perform operations on operands, classified as:
+- **Arithmetic:** +, -, *, /, %, ++, --, e.g., `a + b`.
+- **Relational:** ==, !=, <, >, <=, >=, return 1 (true) or 0 (false), e.g., `a == b`.
+- **Logical:** && (AND), || (OR), ! (NOT), combine conditions, e.g., `a && b`.
+- **Bitwise:** &, |, ^, ~, <<, >>, operate on bits, e.g., `a & b`.
+- **Assignment:** =, +=, -=, *=, /=, %=, etc., e.g., `a += 5`.
+- **Other:** sizeof, comma (,), conditional (?:), dot (.), arrow (->), cast, addressof (&), dereference (*).
 
-# Structures and Unions in C
+Expressions combine operators and operands, e.g., `a + b * c`. Precedence and associativity determine evaluation order; use parentheses for clarity, e.g., `(a + b) * c`.
 
-## Structures
+### Control Flow Statements
+Control flow statements manage execution order:
+- **Conditional:** `if`, `if-else`, `if-else-if`, `switch-case`, ternary operator (?:), e.g., `if (a > 0) printf("Positive");`.
+- **Loops:** `for` (e.g., `for(int i=0; i<5; i++)`), `while` (e.g., `while(count<5)`), `do-while` (executes at least once), nested loops for multi-dimensional iteration.
+- **Jump:** `break` exits loops/switches, `continue` skips iterations, `return` exits functions, `goto` jumps to labels (discouraged for readability).
 
-### Definition
-- **Structures** are user-defined data types that group different data types together. They are used to represent a record.
+These enable decision-making and repetition, crucial for program logic.
 
-### Declaration and Definition
-- **Syntax**:
-  ```c
-  struct StructureName {
-      data_type member1;
-      data_type member2;
-      // More members
-  };
-  ```
-- **Example**:
-  ```c
-  struct Person {
-      char name[50];
-      int age;
-      float salary;
-  };
-  ```
+### Functions
+Functions are reusable code blocks performing specific tasks. Declare with return type and parameters, e.g., `int add(int a, int b);`. Define with body, e.g., `int add(int a, int b) { return a + b; }`. Call with arguments, e.g., `result = add(5, 6);`. Types include library (e.g., `printf`) and user-defined. Parameters pass by value or reference (via pointers). Functions can be recursive, e.g., factorial calculation. Return type can be `void` for no return.
 
-### Accessing Members
-- **Creating an Instance**:
-  ```c
-  struct Person person1;
-  ```
-- **Accessing Members**:
-  - Using the dot operator `.`:
-    ```c
-    person1.age = 30;
-    strcpy(person1.name, "John");
-    person1.salary = 50000.50;
-    ```
+### Array
+Arrays store multiple same-type elements contiguously. Declare as `int arr[5];`, initialize `int arr[] = {1, 2, 3};`. Access via index, e.g., `arr[0]`. Multi-dimensional, e.g., `int matrix[2][3]` for 2D. Passed to functions as pointers, requiring careful bounds management to avoid overflow.
 
-### Nested Structures
-- **Definition**: Structures within structures.
-- **Example**:
-  ```c
-  struct Address {
-      char street[50];
-      char city[50];
-      int zip;
-  };
+### Pointers
+Pointers store memory addresses, declared as `int *ptr;`. Initialize with `ptr = &var;`, dereference with `*ptr` to access value. Used for dynamic memory (e.g., `malloc`), passing by reference, array access. Support arithmetic, e.g., `ptr++` moves to next element. Concepts include null pointers, dangling pointers, pointer-to-pointer for complex data.
 
-  struct Employee {
-      char name[50];
-      struct Address addr;
-      float salary;
-  };
+### String Handling
+Strings are char arrays ending with '\0'. Declare as `char str[10];` or `char *str = "Hello";`. Handle with `<string.h>` functions: `strlen` for length, `strcpy` for copy, `strcat` for concatenation, `strcmp` for comparison. Ensure null terminator for proper handling.
 
-  struct Employee emp1;
-  emp1.addr.zip = 12345;
-  ```
+### Structures and Unions
+- **Structures:** Group different types, e.g., `struct Student { char name[50]; int age; };`. Access with dot operator, e.g., `student.age`. Useful for complex data.
+- **Unions:** Share memory, e.g., `union Data { int i; float f; };`. Only one member active at a time, saving space, e.g., for type-agnostic storage.
 
-### Array of Structures
-- **Definition**: Arrays where each element is a structure.
-- **Example**:
-  ```c
-  struct Person people[5];
+### Files Handling
+File handling reads/writes external files. Use `fopen` to open (modes: "r" read, "w" write, "a" append), `fclose` to close. Read/write with `fread`, `fwrite`, or formatted `fprintf`, `fscanf`. Check file operations for success, e.g., `if (fp == NULL) printf("Error");`.
 
-  people[0].age = 25;
-  strcpy(people[0].name, "Alice");
-  people[0].salary = 30000;
-  ```
+### Pre-Processor Directives
+Pre-process before compilation, starting with `#`. Include headers with `#include <stdio.h>`, define macros with `#define PI 3.14`. Conditional compilation with `#if`, `#ifdef`, `#ifndef`, `#else`, `#endif` for code portability.
 
-### Structure Pointers
-- **Definition**: Pointers that point to structures.
-- **Example**:
-  ```c
-  struct Person *ptr;
-  ptr = &person1;
+### Command Line Arguments
+Pass inputs at execution, accessed via `main(int argc, char *argv[])`. `argc` is argument count, `argv` is string array. `argv[0]` is program name, e.g., `./program 10 20` has `argc=3`, `argv[0]="./program"`, `argv[1]="10"`. Useful for flexible programs.
 
-  ptr->age = 45;  // Using arrow operator to access members via pointer
-  ```
+---
 
-### Memory Allocation for Structures
-- **Static Allocation**:
-  ```c
-  struct Person person2;
-  ```
-- **Dynamic Allocation**:
-  ```c
-  struct Person *ptr;
-  ptr = (struct Person*)malloc(sizeof(struct Person));
-  ```
+### Detailed Notes for WB-JECA Exam
 
-### Typedef with Structures
-- **Definition**: Simplifying structure declarations using `typedef`.
-- **Example**:
-  ```c
-  typedef struct Person {
-      char name[50];
-      int age;
-      float salary;
-  } Person;
+#### Variables and Data Types
+Variables are named memory locations storing data, essential for programming. In C, each variable must have a declared data type, as C is statically typed, meaning types are fixed at declaration and cannot change, due to varying memory needs and type-specific operations. Declaration syntax is `data_type variable_name;`, e.g., `int age;`, with initialization possible, e.g., `int age = 25;`.
 
-  Person p1;
-  ```
+**Naming Rules:**
+- Must start with a letter or underscore.
+- Can include letters, digits, underscores, no spaces.
+- Case-sensitive, e.g., `Age` and `age` differ.
+- Cannot be keywords like `int`, `while`.
 
-## Unions
+**Data Types Classification:**
+- **Primitive:** Basic types for simple values.
+  - `int`: Stores integers, typically 4 bytes, range -2,147,483,648 to 2,147,483,647, format `%d`. Variants include `short int` (2 bytes, -32,768 to 32,767), `long int` (4 or 8 bytes, larger range), `unsigned int` (0 to positive, no negatives).
+  - `char`: Single character, 1 byte, range -128 to 127 (signed) or 0 to 255 (unsigned), format `%c`.
+  - `float`: Single-precision floating-point, 4 bytes, range ~1.2E-38 to 3.4E+38, format `%f`.
+  - `double`: Double-precision, 8 bytes, range ~1.7E-308 to 1.7E+308, format `%lf`.
+  - `void`: No value, used for pointers, functions without return.
 
-### Definition
-- **Unions** are user-defined data types where all members share the same memory location. Only one member can contain a value at any given time.
+- **Derived:** Array, pointers, function (covered separately).
+- **User Defined:** Structure, union, enum (covered separately).
 
-### Declaration and Definition
-- **Syntax**:
-  ```c
-  union UnionName {
-      data_type member1;
-      data_type member2;
-      // More members
-  };
-  ```
-- **Example**:
-  ```c
-  union Data {
-      int i;
-      float f;
-      char str[20];
-  };
-  ```
+**Modifiers:** `long`, `short`, `signed`, `unsigned` adjust size/range, e.g., `unsigned char` for 0-255 range.
 
-### Accessing Members
-- **Creating an Instance**:
-  ```c
-  union Data data;
-  ```
-- **Accessing Members**:
-  - Using the dot operator `.`:
-    ```c
-    data.i = 10;
-    printf("data.i: %d\n", data.i);
+**Size and Range:** Vary by system; use `sizeof()` operator, e.g., `sizeof(int)` returns 4 on 64-bit GCC. Example table for 64-bit GCC:
+| Data Type           | Size (bytes) | Range                              | Format Specifier |
+|--------------------|--------------|------------------------------------|------------------|
+| short int          | 2            | -32,768 to 32,767                 | %hd              |
+| unsigned short int | 2            | 0 to 65,535                       | %hu              |
+| unsigned int       | 4            | 0 to 4,294,967,295                | %u               |
+| int                | 4            | -2,147,483,648 to 2,147,483,647   | %d               |
+| long int           | 4            | -2,147,483,648 to 2,147,483,647   | %ld              |
+| unsigned long int  | 4            | 0 to 4,294,967,295                | %lu              |
+| long long int      | 8            | -(2^63) to (2^63)-1               | %lld             |
+| unsigned long long int | 8        | 0 to 18,446,744,073,709,551,615   | %llu             |
+| signed char        | 1            | -128 to 127                       | %c               |
+| unsigned char      | 1            | 0 to 255                          | %c               |
+| float              | 4            | 1.2E-38 to 3.4E+38                | %f               |
+| double             | 8            | 1.7E-308 to 1.7E+308              | %lf              |
+| long double        | 16           | 3.4E-4932 to 1.1E+4932            | %Lf              |
 
-    data.f = 220.5;
-    printf("data.f: %f\n", data.f);
+**Constants:** Declared with `const`, e.g., `const int MAX = 100`, unchangeable, useful for fixed values.
 
-    strcpy(data.str, "C Programming");
-    printf("data.str: %s\n", data.str);
-    ```
+#### IO Operations
+IO operations manage data exchange, primarily console-based in C. Key functions:
+- **Output: printf()** from `<stdio.h>`, prints formatted output, e.g., `printf("Age: %d\n", age);` outputs "Age: 25" with newline. Format specifiers: `%d` (int), `%f` (float), `%c` (char), `%s` (string), `%lf` (double). Escape sequences: `\n` (newline), `\t` (tab).
+- **Input: scanf()**, reads formatted input, e.g., `scanf("%d", &age);`, requires `&` for variable address. Can read multiple, e.g., `scanf("%d %f", &a, &b);`. Format specifiers match data types.
 
-### Differences Between Structures and Unions
-| Feature        | Structure | Union |
-|----------------|-----------|-------|
-| Memory         | Allocates memory for all members. | Allocates memory equal to the largest member. |
-| Member Access  | All members can be accessed independently. | Only one member can be accessed at a time. |
-| Use Case       | Used when you need to store multiple related data. | Used when you need to store one of several types of data. |
+Other functions: `getchar()` reads single char, `putchar()` writes single char, `gets()` reads string (deprecated, use `fgets`), `puts()` writes string. `printf` returns characters printed, `scanf` returns items read, useful for error checking.
 
-### Example with Structures and Unions
+#### Operators and Expressions
+Operators perform operations on operands, classified by functionality:
+- **Arithmetic:** +, -, *, /, %, ++, --, unary +, unary -, e.g., `a + b`, `++i` increments.
+- **Relational:** ==, !=, <, >, <=, >=, compare, return 1 (true) or 0 (false), e.g., `a == b`.
+- **Logical:** && (AND, both true), || (OR, either true), ! (NOT, negates), e.g., `a && b`.
+- **Bitwise:** &, |, ^, ~, <<, >>, operate on bits, e.g., `a & b` ANDs bits.
+- **Assignment:** = (assign), +=, -=, *=, /=, %=, &=, |=, ^=, >>=, <<=, e.g., `a += 5`.
+- **Other:** sizeof (size of type), comma (,), conditional (?:), dot (.) and arrow (->) for structures, cast for type conversion, & (addressof), * (dereference).
 
-#### Structure Example
-```c
-#include <stdio.h>
-#include <string.h>
+**Expressions:** Combinations like `a + b * c`, evaluated by precedence (e.g., * before +), associativity (left-to-right or right-to-left). Use parentheses for clarity, e.g., `(a + b) * c`.
 
-struct Student {
-    char name[50];
-    int age;
-    float gpa;
-};
+#### Control Flow Statements
+Control flow determines execution order, essential for logic:
+- **Conditional:**
+  - `if`: `if (condition) { code; }`, executes if true.
+  - `if-else`: `if (condition) { } else { }`, chooses block.
+  - `if-else-if`: Multiple conditions, e.g., `if (a>0) { } else if (a<0) { } else { }`.
+  - `switch-case`: `switch (expr) { case val: code; break; default: code; }`, uses `break` to exit.
+  - Ternary: `condition ? expr1 : expr2`, e.g., `a == 5 ? "equal" : "not equal"`.
+- **Loops:**
+  - `for`: `for(init; condition; inc) { code; }`, e.g., `for(int i=0; i<5; i++)`.
+  - `while`: `while(condition) { code; }`, e.g., `while(count<5)`.
+  - `do-while`: `do { code; } while(condition);`, executes at least once.
+  - Nested: Loops within loops, e.g., for 2D arrays.
+- **Jump:**
+  - `break`: Exits loop/switch, e.g., `for(i=0; i<10; i++) { if(i==5) break; }`.
+  - `continue`: Skips iteration, e.g., skips odd numbers.
+  - `return`: Exits function, optionally returns, e.g., `return a+b;`.
+  - `goto`: Jumps to label, e.g., `goto label; ... label: code;`, discouraged for readability.
 
-int main() {
-    struct Student student1;
+#### Functions
+Functions modularize code, reusable blocks performing tasks. Declare with `return_type name(parameter_list);`, define with body, e.g., `int add(int a, int b) { return a+b; }`. Call with `result = add(5, 6);`. Types: library (e.g., `printf`) and user-defined. Parameters pass by value (copy) or reference (pointers). Recursion: function calls itself, e.g., factorial. Return type can be `void` for no return, e.g., `void print() { printf("Hello"); }`.
 
-    strcpy(student1.name, "Alice");
-    student1.age = 20;
-    student1.gpa = 3.9;
+#### Array
+Arrays store same-type elements contiguously, declared as `data_type name[size];`, e.g., `int arr[5];`. Initialize `int arr[] = {1, 2, 3};`, access via index, e.g., `arr[0]`. Multi-dimensional, e.g., `int matrix[2][3]` for 2D. Passed to functions as pointers, e.g., `void print(int arr[], int size)`. Manage bounds to avoid overflow, e.g., accessing `arr[5]` in size 5 array is undefined.
 
-    printf("Name: %s\n", student1.name);
-    printf("Age: %d\n", student1.age);
-    printf("GPA: %.2f\n", student1.gpa);
+#### Pointers
+Pointers store addresses, declared as `data_type *name;`, e.g., `int *ptr;`. Initialize with `ptr = &var;`, dereference with `*ptr` for value. Used for dynamic memory (`malloc`, `free`), passing by reference, array access. Arithmetic: `ptr++` moves to next element, based on type size. Concepts: null pointer (points to 0), dangling (points to freed memory), pointer-to-pointer (`int **ptr`) for complex data.
 
-    return 0;
-}
-```
+#### String Handling
+Strings are char arrays ending with '\0', declared as `char str[10];` or `char *str = "Hello";`. Handle with `<string.h>`: `strlen(str)` for length, `strcpy(dest, src)` for copy, `strcat(dest, src)` for concatenation, `strcmp(str1, str2)` for comparison (0 if equal). Ensure null terminator for proper handling, e.g., `char str[] = "Hello\0";`.
 
-#### Union Example
-```c
-#include <stdio.h>
-#include <string.h>
+#### Structures and Unions
+- **Structures:** Group different types, e.g., `struct Student { char name[50]; int age; };`. Declare variable `struct Student s;`, access with dot, e.g., `s.age = 20`. Useful for complex data like records.
+- **Unions:** Share memory, e.g., `union Data { int i; float f; };`. Only one member active, e.g., if `i` set, `f` undefined. Saves space, useful for type-agnostic storage.
 
-union Data {
-    int i;
-    float f;
-    char str[20];
-};
+#### Files Handling
+File handling reads/writes external files, using `<stdio.h>`. Open with `fopen("file.txt", "r")` for read, "w" for write, "a" for append. Close with `fclose(fp)`. Read/write with `fread`, `fwrite` for binary, `fprintf`, `fscanf` for formatted, e.g., `fprintf(fp, "%d", num);`. Check success, e.g., `if (fp == NULL) printf("Error opening file");`.
 
-int main() {
-    union Data data;
+#### Pre-Processor Directives
+Pre-process before compilation, starting with `#`. Include headers with `#include <stdio.h>` or `"header.h"`. Define macros with `#define PI 3.14`, e.g., `circum = 2 * PI * r;`. Conditional compilation: `#if`, `#ifdef`, `#ifndef`, `#else`, `#endif`, e.g., `#ifdef DEBUG printf("Debug mode"); #endif`. Enhances portability, code management.
 
-    data.i = 10;
-    printf("data.i: %d\n", data.i);
+#### Command Line Arguments
+Pass inputs at execution, accessed via `main(int argc, char *argv[])`. `argc` is count, `argv` is string array. Example: `./program 10 20` has `argc=3`, `argv[0]="./program"`, `argv[1]="10"`, `argv[2]="20"`. Useful for flexible programs, e.g., file processing, configuration.
 
-    data.f = 220.5;
-    printf("data.f: %f\n", data.f);
-
-    strcpy(data.str, "C Programming");
-    printf("data.str: %s\n", data.str);
-
-    return 0;
-}
-```
-
-### Real-World Application of Unions
-- **Example**: Storing data packets where the packet can be of different types.
-  ```c
-  union Packet {
-      int integerPacket;
-      float floatPacket;
-      char strPacket[50];
-  };
-
-  void processPacket(union Packet pkt, int type) {
-      switch (type) {
-          case 1:
-              printf("Integer Packet: %d\n", pkt.integerPacket);
-              break;
-          case 2:
-              printf("Float Packet: %f\n", pkt.floatPacket);
-              break;
-          case 3:
-              printf("String Packet: %s\n", pkt.strPacket);
-              break;
-      }
-  }
-  ```
-
-## File Handling
-- **Functions**:
-  - **fopen()**: Opens a file.
-  - **fclose()**: Closes a file.
-  - **fread()**: Reads data from a file.
-  - **fwrite()**: Writes data to a file.
-  - **fprintf()**: Writes formatted output to a file.
-  - **fscanf()**: Reads formatted input from a file.
-- **Modes**:
-  - `"r"`: Read
-  - `"w"`: Write
-  - `"a"`: Append
-  - `"r+"`: Read/Write
-  - `"w+"`: Write/Read
-  - `"a+"`: Append/Read
-- **Example**:
-  ```c
-  FILE *fp;
-  fp = fopen("file.txt", "w");
-  if (fp != NULL) {
-      fprintf(fp, "Hello, World!");
-      fclose(fp);
-  }
-  ```
-
-## Pre-Processor Directives
-- **Definition**: Commands processed by the preprocessor before compilation.
-- **Common Directives**:
-  - `#define`: Defines a macro.
-    ```c
-    #define PI 3.14
-    ```
-  - `#include`: Includes a file.
-    ```c
-    #include <stdio.h>
-    #include "myfile.h"
-    ```
-  - `#if`, `#else`, `#elif`, `#endif`: Conditional compilation.
-    ```c
-    #if defined(MACRO)
-        // statements
-    #else
-        // statements
-    #endif
-    ```
-
-## Command Line Arguments
-- **Definition**: Arguments passed to `main` from the command line.
-- **Syntax**:
-  ```c
-  int main(int argc, char *argv[]) {
-      // argc: argument count
-      // argv: argument vector (array of strings)
-  }
-  ```
-- **Example**:
-  ```c
-  int main(int argc, char *argv[]) {
-      if (argc > 1) {
-          printf("Argument: %s\n", argv[1]);
-      }
-      return 0;
-  }
-  ```
+### Key Citations
+- [Data Types in C GeeksforGeeks](https://www.geeksforgeeks.org/data-types-in-c/)
+- [Variables in C GeeksforGeeks](https://www.geeksforgeeks.org/variables-in-c/)
+- [Basic Input and Output in C GeeksforGeeks](https://www.geeksforgeeks.org/basic-input-and-output-in-c/)
+- [Operators in C GeeksforGeeks](https://www.geeksforgeeks.org/operators-in-c/)
+- [Control Flow Statements in Programming GeeksforGeeks](https://www.geeksforgeeks.org/control-flow-statements-in-programming/)
