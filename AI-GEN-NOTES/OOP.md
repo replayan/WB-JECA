@@ -1,123 +1,226 @@
-# Object-Oriented Programming (OOP) in C++
+# OOPs Concept's
 
-## Basic Concepts
+---
 
-### Data Types
-- **Primitive Types**: `int`, `char`, `float`, `double`, `bool`
-- **Derived Types**: Arrays, Pointers, References
-- **User-Defined Types**: `struct`, `class`, `enum`, `union`
+## 1. Data Types
+
+### Primitive Data Types
+- **Integer types:** `int`, `short`, `long`, `unsigned int`, etc.
+- **Floating-point types:** `float`, `double`, `long double`
+- **Character type:** `char`
+- **Boolean type (C++):** `bool`
+
+### Derived Data Types
+- **Pointers:** Variables that hold memory addresses.
+- **Arrays:** Collections of elements of the same type.
+- **Functions:** Blocks of code that perform tasks.
+- **References (in C++):** Alias for another variable.
+
+### User-Defined Data Types
+- **Structures (struct):** Collection of variables under one name.
+- **Unions:** Special structure where all members share the same memory.
+- **Enumerated types (enum):** User-defined type consisting of named constants.
+- **Classes:** Blueprint for objects combining data and functions.
+
+---
+
+## 2. Control Structures
 
 ### If / Else If / Else
-- **Syntax**:
+- **If Statement:** Executes a block of code if a condition is true.
+  
   ```cpp
   if (condition) {
-      // statements
+      // code if condition is true
   } else if (another_condition) {
-      // statements
+      // code if the second condition is true
   } else {
-      // statements
+      // code if none of the above conditions are met
   }
   ```
 
-### Loops
-- **For Loop**:
+- **Key Points:**  
+  - Conditions are typically expressions that evaluate to true/false.
+  - Can be nested for more complex decisions.
+
+### Switch Case
+- **Definition:** A multi-way branch statement.
+  
   ```cpp
-  for (int i = 0; i < 10; ++i) {
-      // statements
+  switch (variable) {
+      case value1:
+          // code for value1
+          break;
+      case value2:
+          // code for value2
+          break;
+      default:
+          // default case code
   }
   ```
-- **While Loop**:
+
+- **Key Points:**  
+  - Evaluates an expression once and compares it against constant values.
+  - `break` prevents fall-through; without it, execution continues into the next case.
+
+---
+
+## 3. Loops
+
+### For Loop
+- **Structure:**
+  
+  ```cpp
+  for (initialization; condition; update) {
+      // loop body
+  }
+  ```
+
+- **When to Use:** Iterating when the number of iterations is known.
+
+### While Loop
+- **Structure:**
+  
   ```cpp
   while (condition) {
-      // statements
+      // loop body
   }
   ```
-- **Do-While Loop**:
+
+- **When to Use:** When the condition is checked before the loop starts.
+
+### Do-While Loop
+- **Structure:**
+  
   ```cpp
   do {
-      // statements
+      // loop body
   } while (condition);
   ```
 
-### Functions
-- **Syntax**:
+- **When to Use:** Ensures the loop runs at least once.
+
+---
+
+## 4. Functions
+
+### Definition and Declaration
+- **Definition:** A block of code that performs a specific task.
+- **Declaration/Prototype:** Tells the compiler about the function name, return type, and parameters.
+  
   ```cpp
-  return_type function_name(parameters) {
-      // statements
-      return value;
-  }
-  ```
-- **Example**:
-  ```cpp
+  // Declaration (prototype)
+  int add(int a, int b);
+
+  // Definition
   int add(int a, int b) {
       return a + b;
   }
   ```
 
-### Switch Case
-- **Syntax**:
+- **Key Points:**  
+  - Promote code reusability.
+  - Functions can return values or be void (no return value).
+
+---
+
+## 5. Pointers
+
+### Definition
+- **Concept:** Variables that store memory addresses of other variables.
+- **Syntax Example:**
+  
   ```cpp
-  switch (expression) {
-      case constant1:
-          // statements
-          break;
-      case constant2:
-          // statements
-          break;
-      default:
-          // statements
-  }
+  int a = 10;
+  int *ptr = &a;  // ptr stores the address of a
   ```
 
-### Pointers
-- **Definition**: Variables that store the memory address of another variable.
-- **Syntax**:
-  ```cpp
-  int *ptr;
-  int value = 10;
-  ptr = &value;
-  ```
+### Key Points:
+- **Dereferencing:** Using `*ptr` to access the value.
+- **Pointer Arithmetic:** Incrementing pointers to traverse arrays.
+- **Null Pointers:** Use `nullptr` (C++) or `NULL` (C) when a pointer does not reference a valid memory location.
 
-### Structure
-- **Definition**: User-defined data type that groups related variables.
-- **Syntax**:
+---
+
+## 6. Structures
+
+### Definition
+- **Structures (struct):** Custom data types that group variables.
+  
   ```cpp
-  struct Person {
-      string name;
-      int age;
+  struct Point {
+      int x;
+      int y;
   };
+
+  Point p1 = {10, 20};
   ```
 
-### Array
-- **Definition**: Collection of elements of the same type.
-- **Syntax**:
+### Key Points:
+- Useful for modeling records (e.g., a student’s record).
+- Members are by default public (in C++ structs).
+
+---
+
+## 7. Arrays
+
+### Definition
+- **Array:** A collection of elements of the same type stored in contiguous memory.
+  
   ```cpp
   int arr[5] = {1, 2, 3, 4, 5};
   ```
 
-### String
-- **Definition**: Sequence of characters.
-- **Syntax**:
+### Key Points:
+- Fixed size once declared.
+- Indexing starts at 0.
+- Can be multi-dimensional (e.g., matrices).
+
+---
+
+## 8. Strings
+
+### C-Style Strings
+- **Definition:** Arrays of characters ending in a null character (`'\0'`).
+  
   ```cpp
-  string str = "Hello, World!";
+  char str[] = "Hello";
   ```
 
-### Function Overloading
-- **Definition**: Multiple functions with the same name but different parameters.
-- **Example**:
+### C++ `std::string`
+- **Definition:** A more flexible string class provided by the C++ Standard Library.
+  
   ```cpp
-  int add(int a, int b) {
-      return a + b;
-  }
-
-  double add(double a, double b) {
-      return a + b;
-  }
+  #include <string>
+  std::string greeting = "Hello";
   ```
 
-### Function Templates
-- **Definition**: Functions that operate with generic types.
-- **Syntax**:
+### Key Points:
+- `std::string` supports numerous operations like concatenation, substring extraction, and length calculation.
+
+---
+
+## 9. Function Overloading
+
+### Definition
+- **Concept:** Multiple functions can have the same name but different parameter lists.
+  
+  ```cpp
+  int add(int a, int b) { return a + b; }
+  double add(double a, double b) { return a + b; }
+  ```
+
+### Key Points:
+- Determined by the number, order, and types of parameters.
+- Improves code readability and usability.
+
+---
+
+## 10. Function Templates
+
+### Definition
+- **Concept:** Write generic functions that work with different data types.
+  
   ```cpp
   template <typename T>
   T add(T a, T b) {
@@ -125,332 +228,495 @@
   }
   ```
 
-### SCOPE of Variable
-- **Local Scope**: Variable declared inside a function or block.
-- **Global Scope**: Variable declared outside all functions.
+### Key Points:
+- Helps in code reusability.
+- The compiler generates the function code for each type it is used with.
 
-### Type Aliases (typedef / using)
-- **typedef**: 
+---
+
+## 11. Scope of Variables
+
+### Local Scope
+- **Definition:** Variables declared inside a function/block; accessible only within that block.
+
+### Global Scope
+- **Definition:** Variables declared outside any function; accessible from any part of the program.
+
+### Block Scope (C++ Specific)
+- **Definition:** Variables declared inside `{ }` (e.g., in loops or conditional blocks).
+
+### Key Points:
+- Variables are only accessible within the region they are declared.
+- Shadowing can occur when a local variable has the same name as a global variable.
+
+---
+
+## 12. Type Aliases (typedef / using)
+
+### typedef
+- **Syntax:**
+  
   ```cpp
   typedef unsigned long ulong;
-  ```
-- **using**:
-  ```cpp
-  using ulong = unsigned long;
+  ulong myVar = 100;
   ```
 
-### Unions
-- **Definition**: User-defined data type where all members share the same memory location.
-- **Syntax**:
+### using (C++11 onwards)
+- **Syntax:**
+  
+  ```cpp
+  using ulong = unsigned long;
+  ulong myVar = 100;
+  ```
+
+### Key Points:
+- Improve code readability.
+- Helpful in simplifying complex type definitions.
+
+---
+
+## 13. Unions
+
+### Definition
+- **Concept:** A union allows different data types to share the same memory location.
+  
   ```cpp
   union Data {
       int i;
       float f;
-      char c;
+      char str[20];
   };
   ```
 
-### Enumerated Types (enum)
-- **Definition**: User-defined type consisting of a set of named integral constants.
-- **Syntax**:
-  ```cpp
-  enum Color { RED, GREEN, BLUE };
-  ```
-
-## Classes and Object-Oriented Concepts
-
-### Class
-- **Definition**: Blueprint for creating objects.
-- **Syntax**:
-  ```cpp
-  class ClassName {
-  public:
-      // member variables
-      // member functions
-  };
-  ```
-
-### Constructors
-- **Definition**: Special member function called when an object is instantiated.
-- **Syntax**:
-  ```cpp
-  ClassName() {
-      // constructor body
-  }
-  ```
-
-### Overloading Constructors
-- **Definition**: Multiple constructors with different parameters.
-- **Example**:
-  ```cpp
-  class Box {
-  public:
-      Box() {}
-      Box(double l, double w, double h) : length(l), width(w), height(h) {}
-  private:
-      double length, width, height;
-  };
-  ```
-
-### Member Initialization in Constructors
-- **Syntax**:
-  ```cpp
-  ClassName() : member1(value1), member2(value2) {
-      // constructor body
-  }
-  ```
-
-### Pointers to Classes
-- **Syntax**:
-  ```cpp
-  ClassName *ptr = new ClassName();
-  delete ptr;
-  ```
-
-### Overloading Operators
-- **Definition**: Providing a special meaning to an operator.
-- **Syntax**:
-  ```cpp
-  class Complex {
-  public:
-      Complex operator + (const Complex &obj) {
-          Complex res;
-          res.real = this->real + obj.real;
-          res.imag = this->imag + obj.imag;
-          return res;
-      }
-  private:
-      int real, imag;
-  };
-  ```
-
-### Keyword `this`
-- **Definition**: Pointer to the current object.
-- **Usage**:
-  ```cpp
-  this->member = value;
-  ```
-
-### Static Members
-- **Definition**: Members shared by all objects of the class.
-- **Syntax**:
-  ```cpp
-  class ClassName {
-  public:
-      static int staticMember;
-  };
-  int ClassName::staticMember = 0;
-  ```
-
-### Const Member Functions
-- **Definition**: Functions that do not modify the object.
-- **Syntax**:
-  ```cpp
-  class ClassName {
-  public:
-      void display() const {
-          // cannot modify any member variables
-      }
-  };
-  ```
-
-### Class Templates
-- **Definition**: Classes that operate with generic types.
-- **Syntax**:
-  ```cpp
-  template <typename T>
-  class ClassName {
-  private:
-      T member;
-  public:
-      ClassName(T arg) : member(arg) {}
-  };
-  ```
-
-### Template Specialization
-- **Definition**: Specializing a template for a specific type.
-- **Syntax**:
-  ```cpp
-  template <>
-  class ClassName<int> {
-  private:
-      int member;
-  public:
-      ClassName(int arg) : member(arg) {}
-  };
-  ```
-
-### Namespace
-- **Definition**: Logical grouping of related classes, functions, and variables.
-- **Syntax**:
-  ```cpp
-  namespace MyNamespace {
-      int var;
-      void func() {}
-  }
-  ```
-
-Sure, let me include the definitions for Friend Functions and Friend Classes along with examples for clarity.
+### Key Points:
+- Only one member can contain a value at any one time.
+- Useful when storing one of several types of data in the same memory space.
 
 ---
 
-### Friend Functions
-- **Definition**: A friend function is a function that is not a member of a class but has access to the class's private and protected members.
-- **Usage**: Used to allow an external function to access the private and protected data of a class.
-- **Syntax**:
+## 14. Enumerated Types (enum)
+
+### Definition
+- **Concept:** Creates a new type with a set of named integer constants.
+  
   ```cpp
-  class ClassName {
+  enum Color { RED, GREEN, BLUE };
+  Color c = RED;
+  ```
+
+### Key Points:
+- Improves code clarity by using symbolic names.
+- Underlying type is usually `int` (modifiable in C++11 with enum class).
+
+---
+
+## 15. Classes
+
+### Definition
+- **Class:** A blueprint for creating objects, encapsulating data and behaviors.
+  
+  ```cpp
+  class Rectangle {
   private:
-      int data;
+      int width, height;
+
   public:
-      ClassName() : data(0) {}
-      // Friend function declaration
-      friend void friendFunction(ClassName &obj);
+      void setDimensions(int w, int h) {
+          width = w;
+          height = h;
+      }
+      int area() {
+          return width * height;
+      }
+  };
+  ```
+
+### Key Points:
+- Encapsulation, data hiding, and abstraction are key principles.
+- Members can be `private`, `protected`, or `public`.
+
+---
+
+## 16. Constructors
+
+### Definition
+- **Constructors:** Special member functions automatically called when an object is created.
+  
+  ```cpp
+  class Rectangle {
+  public:
+      int width, height;
+      // Default constructor
+      Rectangle() : width(0), height(0) {}
+
+      // Parameterized constructor
+      Rectangle(int w, int h) : width(w), height(h) {}
+  };
+  ```
+
+### Key Points:
+- **Default constructor:** No parameters.
+- **Parameterized constructor:** Takes arguments for initialization.
+- Automatically initialize data members.
+
+---
+
+## 17. Overloading Constructors
+
+### Definition
+- **Concept:** Provide multiple constructors with different parameters.
+  
+  ```cpp
+  class Point {
+  public:
+      int x, y;
+      // Default constructor
+      Point() : x(0), y(0) {}
+
+      // Parameterized constructor
+      Point(int a, int b) : x(a), y(b) {}
+  };
+  ```
+
+### Key Points:
+- Offers flexibility when initializing objects.
+- Each constructor may handle a different initialization scenario.
+
+---
+
+## 18. Member Initialization in Constructors
+
+### Definition
+- **Member Initialization List:** A list used in constructors to initialize class members before the constructor body runs.
+  
+  ```cpp
+  class Person {
+      std::string name;
+      int age;
+  public:
+      Person(const std::string &n, int a) : name(n), age(a) {}
+  };
+  ```
+
+### Key Points:
+- Essential for initializing const members or reference members.
+- More efficient when initializing complex data types.
+
+---
+
+## 19. Pointers to Classes
+
+### Definition
+- **Concept:** Pointers can point to objects, enabling dynamic allocation and polymorphism.
+  
+  ```cpp
+  class MyClass { /* ... */ };
+  MyClass* objPtr = new MyClass();
+  // Access members using the arrow operator: objPtr->memberFunction();
+  delete objPtr;
+  ```
+
+### Key Points:
+- Useful in dynamic memory allocation and managing object lifetimes.
+- Facilitate runtime polymorphism when used with virtual functions.
+
+---
+
+## 20. Overloading Operators
+
+### Definition
+- **Concept:** Redefine the meaning of an operator for user-defined classes.
+  
+  ```cpp
+  class Complex {
+      float real, imag;
+  public:
+      Complex(float r = 0, float i = 0) : real(r), imag(i) {}
+      // Overload the '+' operator
+      Complex operator + (const Complex &c) const {
+          return Complex(real + c.real, imag + c.imag);
+      }
+  };
+  ```
+
+### Key Points:
+- Increases the readability of code that uses class objects.
+- Both member operator overloads and friend function overloads can be implemented.
+
+---
+
+## 21. Keyword `this`
+
+### Definition
+- **Concept:** A pointer that holds the address of the current object.
+  
+  ```cpp
+  class Box {
+      int length;
+  public:
+      Box(int l) { this->length = l; }
+  };
+  ```
+
+### Key Points:
+- Used to avoid naming conflicts.
+- It can also be used to return the calling object (e.g., in chained calls).
+
+---
+
+## 22. Static Members
+
+### Definition
+- **Static Data Members:** Shared across all instances of a class.
+- **Static Member Functions:** Can be called on the class itself rather than on an instance.
+  
+  ```cpp
+  class Counter {
+  public:
+      static int count;
+      Counter() { count++; }
+      static int getCount() { return count; }
   };
 
-  // Friend function definition
-  void friendFunction(ClassName &obj) {
-      obj.data = 10; // Accessing private member
-      std::cout << "Data: " << obj.data << std::endl;
+  int Counter::count = 0; // Definition outside the class
+  ```
+
+### Key Points:
+- Static members have a single copy shared by all objects.
+- Useful for counters, configuration values, or shared resources.
+
+---
+
+## 23. Const Member Functions
+
+### Definition
+- **Const Member Functions:** Promises not to modify any member variables (except those declared mutable) of the object.
+  
+  ```cpp
+  class Sample {
+      int value;
+  public:
+      Sample(int val) : value(val) {}
+      int getValue() const { return value; }
+  };
+  ```
+
+### Key Points:
+- Enforced by the compiler to improve code safety.
+- Allow calling these functions on const-qualified objects.
+
+---
+
+## 24. Class Templates
+
+### Definition
+- **Concept:** Create classes that work with any data type.
+  
+  ```cpp
+  template <typename T>
+  class Stack {
+      std::vector<T> elems;
+  public:
+      void push(const T &elem) { elems.push_back(elem); }
+      T pop() {
+          T topElem = elems.back();
+          elems.pop_back();
+          return topElem;
+      }
+  };
+  ```
+
+### Key Points:
+- Enables generic programming.
+- The class is instantiated with a specific type when used.
+
+---
+
+## 25. Template Specialization
+
+### Definition
+- **Concept:** Customizing the behavior of a template for a specific type.
+  
+  ```cpp
+  template <typename T>
+  class Printer {
+  public:
+      void print(const T &data) { std::cout << data; }
+  };
+
+  // Template specialization for char*
+  template <>
+  class Printer<char*> {
+  public:
+      void print(char* const &data) { std::cout << "String: " << data; }
+  };
+  ```
+
+### Key Points:
+- Allows you to define a special case when the generic template does not suffice.
+- Helps fine-tune behavior for specific data types.
+
+---
+
+## 26. Namespace
+
+### Definition
+- **Concept:** Provides a way to group related functions, classes, and variables to prevent name collisions.
+  
+  ```cpp
+  namespace MathFunctions {
+      int add(int a, int b) { return a + b; }
+  }
+
+  int main() {
+      int sum = MathFunctions::add(3, 4);
+      return 0;
+  }
+  ```
+
+### Key Points:
+- Useful in large projects to avoid identifier conflicts.
+- The `using` directive can import all names or a specific name from a namespace.
+
+---
+
+## 27. Friendship (Friend Functions & Friend Classes)
+
+### Friend Functions
+- **Definition:** Non-member functions declared with `friend` inside a class so they can access private/protected members.
+  
+  ```cpp
+  class Box {
+      int width;
+  public:
+      Box(int w) : width(w) {}
+      friend void printWidth(const Box&);
+  };
+
+  void printWidth(const Box &b) {
+      std::cout << "Width: " << b.width;
   }
   ```
 
 ### Friend Classes
-- **Definition**: A friend class is a class that has access to the private and protected members of another class.
-- **Usage**: Used to allow all member functions of one class to access the private and protected data of another class.
-- **Syntax**:
+- **Definition:** A class declared as a friend of another class, hence its member functions have access to the private and protected members.
+  
   ```cpp
-  class B; // Forward declaration
-
   class A {
-  private:
       int data;
   public:
-      A() : data(0) {}
-      // Friend class declaration
+      A(int d) : data(d) {}
       friend class B;
   };
 
   class B {
   public:
-      void accessA(A &obj) {
-          obj.data = 20; // Accessing private member of A
-          std::cout << "Data: " << obj.data << std::endl;
+      void showData(A &a) {
+          std::cout << "Data: " << a.data;
       }
   };
   ```
 
-## Example Illustrations
+### Key Points:
+- Friendship is not transitive nor reciprocal.
+- Useful in operator overloading and when two or more classes need intimate access to each other’s data.
 
-### Example of Friend Function
-```cpp
-#include <iostream>
+---
 
-class Box {
-private:
-    double width;
-public:
-    Box() : width(0) {}
-    // Friend function
-    friend void setWidth(Box &b, double w);
-};
+## 28. Inheritance
 
-void setWidth(Box &b, double w) {
-    b.width = w; // Accessing private member
-    std::cout << "Width: " << b.width << std::endl;
-}
-
-int main() {
-    Box box;
-    setWidth(box, 10.5);
-    return 0;
-}
-```
-**Output**:
-```
-Width: 10.5
-```
-
-### Example of Friend Class
-```cpp
-#include <iostream>
-
-class Rectangle;
-
-class Square {
-private:
-    int side;
-public:
-    Square(int s) : side(s) {}
-    // Friend class declaration
-    friend class Rectangle;
-};
-
-class Rectangle {
-public:
-    int area(Square &sq) {
-        return sq.side * sq.side; // Accessing private member of Square
-    }
-};
-
-int main() {
-    Square sq(4);
-    Rectangle rect;
-    std::cout << "Area: " << rect.area(sq) << std::endl;
-    return 0;
-}
-```
-**Output**:
-```
-Area: 16
-```
-
-### Inheritance
-- **Definition**: Mechanism for creating a new class from an existing class.
-- **Syntax**:
+### Definition
+- **Concept:** A mechanism where one class (derived class) inherits attributes and methods from another class (base class).
+  
   ```cpp
-  class Derived : public Base {
+  class Animal {
+  public:
+      void eat() { std::cout << "Eating"; }
+  };
+
+  class Dog : public Animal {
+  public:
+      void bark() { std::cout << "Barking"; }
   };
   ```
 
-### Polymorphism
-- **Definition**: Ability to call derived class methods through a base class reference.
-- **Example**:
+### Types of Inheritance:
+- **Public:** Public and protected members of the base become public and protected members of the derived class.
+- **Protected/Private Inheritance:** Base class members’ access levels are adjusted accordingly.
+
+### Key Points:
+- Facilitates code reuse.
+- Supports hierarchical classification of classes.
+- Base class pointers can refer to derived class objects (useful in polymorphism).
+
+---
+
+## 29. Polymorphism
+
+### Definition
+- **Concept:** The ability of a function or object to take on many forms.
+- **Compile-Time Polymorphism:** Achieved with function overloading, operator overloading, and templates.
+- **Run-Time Polymorphism:** Achieved with virtual functions.
+
+### Key Points:
+- Promotes flexibility and reuse.
+- In C++, virtual functions allow derived class methods to override base class methods.
+
+---
+
+## 30. Virtual Members
+
+### Definition
+- **Virtual Functions:** Member functions declared with the `virtual` keyword so that they can be overridden in derived classes.
+  
   ```cpp
   class Base {
   public:
-      virtual void show() {
-          cout << "Base show" << endl;
-      }
+      virtual void display() { std::cout << "Base display"; }
   };
+
   class Derived : public Base {
   public:
-      void show() override {
-          cout << "Derived show" << endl;
-      }
-  };
-  Base *b = new Derived();
-  b->show(); // Output: Derived show
-  ```
-
-### Virtual Members
-- **Definition**: Functions that can be overridden in derived classes.
-- **Syntax**:
-  ```cpp
-  class Base {
-  public:
-      virtual void display() {
-          cout << "Display Base" << endl;
-      }
+      void display() override { std::cout << "Derived display"; }
   };
   ```
 
-### Abstract Base Class
-- **Definition**: Class that cannot be instantiated and often contains pure virtual functions.
-- **Syntax**:
+### Key Points:
+- Enables run-time (dynamic) polymorphism.
+- Calls to virtual functions are resolved according to the actual object type pointed to, not the pointer type.
+
+---
+
+## 31. Abstract Base Class
+
+### Definition
+- **Concept:** A class that cannot be instantiated and is designed to be a base class.
+- **Pure Virtual Functions:** Declared by assigning `= 0` to a virtual function.
+  
   ```cpp
-  class AbstractBase {
+  class Shape {
   public:
-      virtual void pureVirtualFunction() = 0; // Pure virtual function
+      // Pure virtual function makes Shape an abstract class
+      virtual void draw() = 0;
+  };
+
+  class Circle : public Shape {
+  public:
+      void draw() override { std::cout << "Drawing Circle"; }
   };
   ```
+
+### Key Points:
+- Enforces that derived classes implement certain functions.
+- Useful when you want to define an interface that multiple derived classes must adhere to.
+
+---
+
+## Final Summary
+
+- **Fundamentals:** Begin with understanding basic data types (primitive, derived, user-defined) and control structures like if/else, loops, and switch case.
+- **Functions and Templates:** Grasp function declarations and definitions, overloading, and templates to enable generic programming.
+- **Memory Management:** Emphasize pointers, structures, arrays, and strings—understanding how memory is allocated and accessed.
+- **OOP Concepts:** Dive into class fundamentals including constructors (with overloading and member initialization), static members, const member functions, and the use of `this`.
+- **Advanced Topics:** Study operator overloading, class templates, template specialization, namespaces, and friendship to enhance functionality.
+- **Inheritance & Polymorphism:** Understand the principles of inheritance, polymorphism via virtual functions, and create abstract base classes for defining interfaces.
